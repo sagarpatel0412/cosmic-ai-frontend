@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './App.css'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
@@ -10,10 +9,10 @@ import Contact from './pages/Contact'
 import { Bounce, ToastContainer } from 'react-toastify'
 import Chat from './pages/Chat'
 import PrivateRoute from './PrivateRoute'
+import Subscription from './pages/Subscription'
+import Success from './pages/Success'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <BrowserRouter>
       <Routes>
@@ -23,8 +22,11 @@ function App() {
         <Route path='/contact' element={<Contact />} />
         <Route path='/about' element={<About />} />
         <Route path="/not-found" element={<NotFound />} />
+
         <Route element={<PrivateRoute />}>
-          <Route path="/chat" element={<Chat />} />
+          <Route path="/chat/:id?" element={<Chat />} />
+          <Route path="/subscription" element={<Subscription />} />
+          <Route path="/success" element={<Success />} />
         </Route>
         <Route path="*" element={<Navigate to='/not-found' />} />
       </Routes>
